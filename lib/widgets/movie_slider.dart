@@ -1,28 +1,34 @@
+import 'package:fl_filmapp/models/models.dart';
 import 'package:flutter/material.dart';
 
 class MoviSlider extends StatelessWidget {
-  const MoviSlider({Key? key}) : super(key: key);
+  final List<Movie> movies;
+  final String? title;
+  const MoviSlider({Key? key, required this.movies, this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 250,
+      height: 280,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              'Popular:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          if (title != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                '$title:',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (_, int index) => const _MoviePoster(),
+              itemCount: movies.length,
+              itemBuilder: (_, int index) => _MoviePoster(movie: movies[index]),
             ),
           )
         ],
@@ -32,9 +38,9 @@ class MoviSlider extends StatelessWidget {
 }
 
 class _MoviePoster extends StatelessWidget {
-  const _MoviePoster({
-    Key? key,
-  }) : super(key: key);
+  final Movie movie;
+
+  const _MoviePoster({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +54,19 @@ class _MoviePoster extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, 'detail'),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: const FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'),
-                image: NetworkImage('https://via.placeholder.com/300x400'),
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(movie.fullPosterImg),
                 width: 130,
                 height: 190,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: Text(
-              'Titulo',
+              movie.title,
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
