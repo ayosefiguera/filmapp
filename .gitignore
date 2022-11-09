@@ -43,6 +43,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-#Dev config
-./providers/__config.dart
-*__config.dart
+# Dev config
+/lib/providers/movies_provider.dart
