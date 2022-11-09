@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:fl_filmapp/themes/app_theme.dart';
-import 'package:fl_filmapp/providers/providers.dart';
+import 'package:fl_filmapp/providers/provider.dart';
 import 'package:fl_filmapp/routes/app_routes.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
+  const AppState({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
