@@ -44,4 +44,4 @@ app.*.map.json
 /android/app/release
 
 #Dev config
-dev_config.dart
+*dev_config.dart
