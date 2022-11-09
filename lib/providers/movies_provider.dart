@@ -4,7 +4,7 @@ import 'package:fl_filmapp/helpers/debouncer.dart';
 import 'package:fl_filmapp/models/search.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_filmapp/models/models.dart';
-import 'dev_config.dart';
+import '__config.dart';
 import 'package:http/http.dart' as http;
 
 class MoviesProvider extends ChangeNotifier {
