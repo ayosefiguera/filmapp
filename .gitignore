@@ -45,3 +45,4 @@ app.*.map.json
 
 #Dev config
 ./providers/__config.dart
+*__config.dart
